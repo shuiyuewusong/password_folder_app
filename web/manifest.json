@@ -1,11 +1,11 @@
 {
-    "name": "password_folder_app",
-    "short_name": "password_folder_app",
+    "name": "密码册子",
+    "short_name": "密码册子",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "一个密码记事本程序",
+    "background_color": "#hexcode",
+    "theme_color": "#hexcode",
+    "description": "密码册子",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

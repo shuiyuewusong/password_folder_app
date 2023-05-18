@@ -48,17 +48,17 @@ class PasswordBean {
   static const String _passwordNetworkAddress = 'networkAddress';
   static const String _passwordIcon = 'icon';
 
-  PasswordBean() {
-    name = '';
-    orders = 0;
-    folderId = '';
-    notes = '';
-    account = '';
-    password = '';
-    email = '';
-    networkAddress = '';
-    icon = '';
-  }
+  PasswordBean({
+    this.name = '',
+    this.orders = 0,
+    this.folderId = '',
+    this.notes = '',
+    this.account = '',
+    this.password = '',
+    this.email = '',
+    this.networkAddress = '',
+    this.icon = '',
+  }) {}
 
   clone(PasswordBean passwordBean) {
     PasswordBean p = PasswordBean();

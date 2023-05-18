@@ -20,6 +20,7 @@ class FolderData extends ChangeNotifier {
   void update(List<FolderBean> folderList) {
     debugPrint('FolderData:update _folderList ${_folderList.length}');
     debugPrint('FolderData:update folderList ${folderList.length}');
+
     _folderList = folderList;
     debugPrint('FolderData:update data');
     notifyListeners();

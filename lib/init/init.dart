@@ -1,4 +1,9 @@
+import 'package:get/get.dart';
+import 'package:password_folder_app/bean/folder_bean.dart';
+import 'package:password_folder_app/bean/password_bean.dart';
 import 'package:password_folder_app/dao/isar_db_utils.dart';
+import 'package:password_folder_app/data/data.dart';
+import 'package:password_folder_app/i18n/i18n.dart';
 import 'package:password_folder_app/service/folder_service.dart';
 import 'package:password_folder_app/service/global_settings_service.dart';
 import 'package:password_folder_app/service/password_service.dart';
@@ -27,4 +32,18 @@ void refreshData(BuildContext context) {
   FolderService().refreshFolderList(context);
   debugPrint("开始加载密码数据");
   PasswordService().refreshListOfFolder(context);
+}
+
+///初始化添加一个示例密码夹及密码
+void initData() async {
+  final int f = await FolderService()
+      .add(FolderBean(name: LanguageText.example.tr, orders: 999));
+  final int p = await PasswordService().add(PasswordBean(
+    name: LanguageText.example.tr,
+    folderId: f.toString(),
+  ));
+  GlobalSettingsService()
+      .setKeyValue(GSKey.initData, DefaultStaticData.initFalse);
+  FolderService().refreshFolderList(Get.context!);
+  PasswordService().refreshListOfFolder(Get.context!);
 }

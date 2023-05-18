@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.syws" "\0"
-            VALUE "FileDescription", "password_folder_app" "\0"
+            VALUE "CompanyName", "个人" "\0"
+            VALUE "FileDescription", "密码册子" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "password_folder_app" "\0"
+            VALUE "InternalName", "密码册子" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.syws. All rights reserved." "\0"
-            VALUE "OriginalFilename", "password_folder_app.exe" "\0"
-            VALUE "ProductName", "password_folder_app" "\0"
+            VALUE "OriginalFilename", "password_folder.exe" "\0"
+            VALUE "ProductName", "密码册子" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

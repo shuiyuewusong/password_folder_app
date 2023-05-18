@@ -1,5 +1,6 @@
 import 'package:password_folder_app/bean/global_settings.dart';
 import 'package:password_folder_app/dao/isar_db_utils.dart';
+import 'package:password_folder_app/data/data.dart';
 import 'package:password_folder_app/data/theme.dart';
 import 'package:password_folder_app/data/theme_notifier.dart';
 import 'package:password_folder_app/i18n/language_type.dart';
@@ -18,6 +19,9 @@ class GSKey {
 
   ///主题颜色键
   static const String themeColor = 'themeColor';
+
+  ///数据初始化
+  static const String initData = 'initData';
 }
 
 ///全局变量对象存储Map
@@ -54,8 +58,10 @@ class GlobalSettingsService {
     debugPrint('init:getThemeColor:${gsTC.value}');
     GSMap.map[gsTC.key] = gsTC;
 
-    ///根据主题刷新页面
-    // _setTheme(gsTT.value, gsTC.value);
+    ///获取初始化的状态
+    GlobalSettings gsID = await getInitData();
+    debugPrint('init:getThemeColor:${gsID.value}');
+    GSMap.map[gsID.key] = gsID;
     return true;
   }
 
@@ -96,6 +102,16 @@ class GlobalSettingsService {
         // _setTheme(GSMap.map[GSKey.themeType]!.value, value);
         Provider.of<ThemeNotifier>(Get.context!, listen: false).setThemeAll();
         GlobalSettings globalSettings = await getThemeColor();
+        globalSettings.value = value;
+        _setKey(globalSettings);
+        break;
+
+      ///保存初始化状态
+      case GSKey.initData:
+        //设置初始化状态
+        GSMap.map[GSKey.initData]!.value = value;
+        //根据主题设置颜色 暗黑主题无法设置颜色
+        GlobalSettings globalSettings = await getInitData();
         globalSettings.value = value;
         _setKey(globalSettings);
         break;
@@ -144,6 +160,20 @@ class GlobalSettingsService {
       return globalSettings;
     } else {
       GlobalSettings gs = GlobalSettings(GSKey.languageType, LanguageType.auto);
+      await _setKey(gs);
+      return gs;
+    }
+  }
+
+  ///获取初始化相关配置
+  Future<GlobalSettings> getInitData() async {
+    final GlobalSettings? globalSettings = await _getKey(GSKey.initData);
+    //设置当前语言状态
+    if (globalSettings != null) {
+      return globalSettings;
+    } else {
+      GlobalSettings gs =
+          GlobalSettings(GSKey.initData, DefaultStaticData.initTrue);
       await _setKey(gs);
       return gs;
     }

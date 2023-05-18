@@ -84,7 +84,8 @@ class MyLanguageTr extends Translations {
               LanguageText.passwordCopiedToClipboard,
           LanguageText.accountCopiedToClipboard:
               LanguageText.accountCopiedToClipboard,
-          LanguageText.message: LanguageText.message
+          LanguageText.message: LanguageText.message,
+          LanguageText.example: LanguageText.example,
         },
         LanguageType.zh: {
           ///home_page
@@ -158,6 +159,7 @@ class MyLanguageTr extends Translations {
           LanguageText.accountCopiedToClipboard: '账户已复制到剪贴板',
 
           LanguageText.message: '消息',
+          LanguageText.example: '示例',
         }
       };
 }

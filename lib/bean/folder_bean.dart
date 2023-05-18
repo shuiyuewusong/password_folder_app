@@ -23,10 +23,11 @@ class FolderBean {
   static const String _folderOrders = 'orders';
   static const String _folderNotes = 'notes';
 
-  FolderBean() {
-    name = '';
-    orders = 0;
-    notes = '';
+  FolderBean(
+      {this.name = '',
+      this.orders = 0,
+      this.notes = '',
+      this.id = Isar.autoIncrement}) {
   }
 
   clone(FolderBean folderBean) {

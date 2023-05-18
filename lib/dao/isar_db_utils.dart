@@ -4,7 +4,7 @@ import 'package:password_folder_app/bean/password_bean.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 
-const _name = "isar";
+const _name = "isar1";
 
 class IsarDbUtils {
   IsarDbUtils._privateConstructor();

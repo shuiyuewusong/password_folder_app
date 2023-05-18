@@ -54,6 +54,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeNotifier = Provider.of<ThemeNotifier>(context);
     return GetMaterialApp(
+
       debugShowCheckedModeBanner: false,
       //设置主题
       theme: themeNotifier.getThemeDataLight,

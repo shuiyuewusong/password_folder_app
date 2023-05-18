@@ -158,8 +158,10 @@ class LanguageText {
   /// 账号已复制到剪贴板
   static const String accountCopiedToClipboard = 'Account copied to clipboard';
 
-
   /// 账号已复制到剪贴板
   static const String message = 'message';
+
+  ///示例
+  static const String example = 'Example';
 //
 }

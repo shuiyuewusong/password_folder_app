@@ -82,6 +82,8 @@ dev_dependencies:
   #一种命令行工具，可简化更新 Flutter 应用程序启动器图标的任务。
   #完全灵活，允许您选择要更新启动器图标的平台，如果您愿意，还可以选择保留旧的启动器图标，以备日后恢复使用。
   flutter_launcher_icons: ^0.13.1
+  #包重命名处理 6 个平台上 15 个文件的 30 个字段的更改，因此您可以专注于您的精彩项目。
+  package_rename: ^1.2.0
 # 以下部分特定于 Flutter 包。
 flutter:
 
@@ -98,6 +100,7 @@ flutter:
 #  ios: true
 #  #图片路径
 #  image_path: "image/app_icon.jpg"
+#刷新图标缓存 flutter pub run flutter_launcher_icons
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
@@ -105,16 +108,16 @@ flutter_launcher_icons:
   min_sdk_android: 21 # android min sdk min:16, default 21
   web:
     generate: true
-    image_path: "path/to/image.png"
+    #    image_path: "image/web/image.png"
     background_color: "#hexcode"
     theme_color: "#hexcode"
   windows:
     generate: true
-    image_path: "path/to/image.png"
+    #    image_path: "image/windows/image.png"
     icon_size: 48 # min:48, max:256, default: 48
   macos:
     generate: true
-    image_path: "path/to/image.png"
+  #    image_path: "image/macos/image.png"
 
   # 要将资产添加到您的应用程序，请添加一个资产部分，如下所示：
   # assets:
@@ -145,4 +148,34 @@ flutter_launcher_icons:
   #
   # 有关包依赖项中字体的详细信息，
   # 查看 https://flutter.dev/custom-fonts/#from-packages
+package_rename_config: # 刷新方法 flutter pub run package_rename:set
+  android:
+    app_name: 密码册子 # (String) Android 应用程序的显示名称
+    #    package_name: # (String) android应用的包名
+    #    override_old_package: # (Optional) (String) 使用它来删除 MainActivity 的旧文件夹结构或使用具有新包名称的现有代码
+    lang: java # (Optional) (String) android开发语言{kotlin(default) or java}
 
+  ios:
+    app_name: 密码册子 # (String) ios 应用程序的显示名称
+    #    bundle_name: # (String) ios 应用程序的包名称
+  #   package_name: # (String) ios 应用程序的产品包标识符
+
+  linux:
+    app_name: 密码册子 # (String) linux 应用程序的窗口标题
+    #   package_name: # (String) linux 应用程序的应用程序 ID
+  #   exe_name: # (String) linux 应用程序的可执行名称（二进制名称）
+
+  macos:
+    app_name: 密码册子 # (String) macos 应用程序的产品名称
+    #   package_name: # (String) macos 应用程序的产品包标识符
+  #   copyright_notice: # (String) macos app的产品版权
+
+  web:
+    app_name: 密码册子 # (String) Web 应用程序和 PWA 的标题和显示名称
+    description: 密码册子 # (String) Web 应用程序和 PWA 的描述
+
+  windows:
+    app_name: 密码册子 # (String) Windows应用程序的窗口标题和软件名称
+    organization: 个人 # (String) windows app的组织名称（公司名称）
+    copyright_notice: # (String) windows app的合法版权
+    exe_name: password_folder # (String) Windows 应用程序的可执行名称（二进制名称）

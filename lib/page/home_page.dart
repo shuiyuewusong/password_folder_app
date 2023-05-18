@@ -1,12 +1,16 @@
+import 'package:password_folder_app/data/data.dart';
 import 'package:password_folder_app/i18n/i18n.dart';
 import 'package:password_folder_app/init/init.dart';
 import 'package:password_folder_app/page/widget/home_folder_list.dart';
 import 'package:password_folder_app/page/widget/home_password_list.dart';
 import 'package:password_folder_app/page/widget/search.dart';
 import 'package:password_folder_app/routes/routing_table.dart';
+import 'package:password_folder_app/service/global_settings_service.dart';
 import 'package:password_folder_app/service/password_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:password_folder_app/util/cache_util.dart';
+import 'package:path_provider/path_provider.dart';
 
 class HomePage extends StatefulWidget {
   ///主页
@@ -29,6 +33,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     refreshData(context);
+    if (GSMap.map[GSKey.initData]?.value == DefaultStaticData.initTrue) {
+      initData();
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text(LanguageText.title.tr),
@@ -48,11 +55,11 @@ class _HomePageState extends State<HomePage> {
 
         ///顶部右侧按钮
         actions: [
-          // IconButton(
-          //     onPressed: () {
-          //       Navigator.pushNamed(context, RoutingTable.login);
-          //     },
-          //     icon: const Icon(Icons.refresh)),
+          IconButton(
+              onPressed: () {
+                test();
+              },
+              icon: const Icon(Icons.refresh)),
           IconButton(
             //搜索按钮
             onPressed: () {
@@ -108,4 +115,10 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+}
+
+test() async {
+  final path = await getTemporaryDirectory();
+  debugPrint(path.path);
+  // CacheUtil.clear();
 }
