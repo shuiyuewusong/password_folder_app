@@ -9,7 +9,6 @@ import 'package:password_folder_app/service/global_settings_service.dart';
 import 'package:password_folder_app/service/password_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:password_folder_app/util/cache_util.dart';
 import 'package:path_provider/path_provider.dart';
 
 class HomePage extends StatefulWidget {

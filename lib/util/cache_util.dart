@@ -8,7 +8,6 @@ class CacheUtil {
   /// 获取缓存大小
   static Future<int> total() async {
     Directory tempDir = await getTemporaryDirectory();
-    if (tempDir == null) return 0;
     int total = await _reduce(tempDir);
     return total;
   }
@@ -17,7 +16,6 @@ class CacheUtil {
   static Future<void> clear() async {
     Directory tempDir = await getTemporaryDirectory();
     debugPrint(tempDir.path);
-    if (tempDir == null) return;
     await _delete(tempDir);
   }
 
@@ -35,7 +33,7 @@ class CacheUtil {
 
       int total = 0;
 
-      if (children != null && children.isNotEmpty)
+      if (children.isNotEmpty)
         for (final FileSystemEntity child in children)
           total += await _reduce(child);
 
