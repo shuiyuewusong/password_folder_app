@@ -58,6 +58,9 @@ class LanguageText {
   ///密码
   static const String password = 'password';
 
+  ///密码
+  static const String otp2FA = 'otp2FA';
+
   ///备注
   static const String notes = 'notes';
 

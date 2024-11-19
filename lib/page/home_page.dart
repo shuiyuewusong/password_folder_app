@@ -9,7 +9,6 @@ import 'package:password_folder_app/service/global_settings_service.dart';
 import 'package:password_folder_app/service/password_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:path_provider/path_provider.dart';
 
 class HomePage extends StatefulWidget {
   ///主页
@@ -40,6 +39,7 @@ class _HomePageState extends State<HomePage> {
         title: Text(LanguageText.title.tr),
 
         ///顶部左侧按钮
+        ///齿轮设置按钮
         leading: IconButton(
             onPressed: () {
               //跳转到设置页面,且如果返回到首页则直接刷新当前页面
@@ -54,13 +54,14 @@ class _HomePageState extends State<HomePage> {
 
         ///顶部右侧按钮
         actions: [
+          //刷新按钮
           IconButton(
               onPressed: () {
                 test();
               },
               icon: const Icon(Icons.refresh)),
+          //搜索按钮
           IconButton(
-            //搜索按钮
             onPressed: () {
               //显示对话框
               showSearch(
@@ -70,6 +71,7 @@ class _HomePageState extends State<HomePage> {
             },
             icon: const Icon(Icons.search),
           ),
+          //新增按钮
           IconButton(
             onPressed: () {
               Navigator.pushNamed(context, RoutingTable.passwordAdd)
@@ -95,17 +97,20 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.max,
         children: [
+          //左侧文件夹列表
           Expanded(
             flex: 24,
             child: HomeFolderWidget(),
           ),
+          //分界线
           Expanded(
             flex: 1,
             child: VerticalDivider(
               width: 1000,
-              thickness: 2,
+              thickness: 1,
             ),
           ),
+          //右侧密码列表
           Expanded(
             flex: 75,
             child: HomePasswordWidget(),
@@ -117,7 +122,7 @@ class _HomePageState extends State<HomePage> {
 }
 
 test() async {
-  final path = await getTemporaryDirectory();
-  debugPrint(path.path);
+  // final path = await getTemporaryDirectory();
+  // debugPrint(path.path);
   // CacheUtil.clear();
 }

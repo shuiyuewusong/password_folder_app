@@ -1,4 +1,5 @@
 import 'package:isar/isar.dart';
+import 'package:otp/otp.dart';
 
 /// 如果类有更新需要使用代码生成器重新生成:flutter pub run build_runner build
 part 'password_bean.g.dart';
@@ -35,6 +36,15 @@ class PasswordBean {
   ///图标 10
   late String icon;
 
+  /// otp 密钥
+  late String secret;
+
+  /// 加密方式
+  late Algorithm algorithm;
+
+  /// 是否是谷歌模式
+  late bool isGoogle = true;
+
   ///静态变量
   static const String beanPassword = 'passwordBean';
   static const String _passwordId = 'id';
@@ -47,6 +57,9 @@ class PasswordBean {
   static const String _passwordEmail = 'email';
   static const String _passwordNetworkAddress = 'networkAddress';
   static const String _passwordIcon = 'icon';
+  static const String _passwordSecret = 'secret';
+  static const String _passwordAlgorithm = 'algorithm';
+  static const String _passwordIsGoogle = 'isGoogle';
 
   PasswordBean({
     this.name = '',
@@ -58,6 +71,9 @@ class PasswordBean {
     this.email = '',
     this.networkAddress = '',
     this.icon = '',
+    this.secret = '',
+    this.algorithm = Algorithm.SHA1,
+    this.isGoogle = true,
   }) {}
 
   clone(PasswordBean passwordBean) {
@@ -72,6 +88,9 @@ class PasswordBean {
     p.networkAddress = passwordBean.networkAddress;
     p.folderId = passwordBean.folderId;
     p.icon = passwordBean.icon;
+    p.secret = passwordBean.secret;
+    p.algorithm = passwordBean.algorithm;
+    p.isGoogle = passwordBean.isGoogle;
     return p;
   }
 
@@ -99,6 +118,9 @@ class PasswordBean {
       _passwordEmail: email,
       _passwordNetworkAddress: networkAddress,
       _passwordIcon: icon,
+      _passwordSecret: secret,
+      _passwordAlgorithm: algorithm,
+      _passwordIsGoogle: isGoogle,
     };
   }
 
@@ -113,5 +135,8 @@ class PasswordBean {
     email = map[_passwordEmail];
     networkAddress = map[_passwordNetworkAddress];
     icon = map[_passwordIcon];
+    secret = map[_passwordSecret];
+    algorithm = map[_passwordAlgorithm];
+    isGoogle = map[_passwordIsGoogle];
   }
 }

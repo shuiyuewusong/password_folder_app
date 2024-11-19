@@ -74,7 +74,7 @@ const PasswordBeanSchema = CollectionSchema(
   getId: _passwordBeanGetId,
   getLinks: _passwordBeanGetLinks,
   attach: _passwordBeanAttach,
-  version: '3.1.0+1',
+  version: '3.1.8',
 );
 
 int _passwordBeanEstimateSize(
@@ -117,17 +117,18 @@ PasswordBean _passwordBeanDeserialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = PasswordBean();
-  object.account = reader.readString(offsets[0]);
-  object.email = reader.readString(offsets[1]);
-  object.folderId = reader.readString(offsets[2]);
-  object.icon = reader.readString(offsets[3]);
+  final object = PasswordBean(
+    account: reader.readStringOrNull(offsets[0]) ?? '',
+    email: reader.readStringOrNull(offsets[1]) ?? '',
+    folderId: reader.readStringOrNull(offsets[2]) ?? '',
+    icon: reader.readStringOrNull(offsets[3]) ?? '',
+    name: reader.readStringOrNull(offsets[4]) ?? '',
+    networkAddress: reader.readStringOrNull(offsets[5]) ?? '',
+    notes: reader.readStringOrNull(offsets[6]) ?? '',
+    orders: reader.readLongOrNull(offsets[7]) ?? 0,
+    password: reader.readStringOrNull(offsets[8]) ?? '',
+  );
   object.id = id;
-  object.name = reader.readString(offsets[4]);
-  object.networkAddress = reader.readString(offsets[5]);
-  object.notes = reader.readString(offsets[6]);
-  object.orders = reader.readLong(offsets[7]);
-  object.password = reader.readString(offsets[8]);
   return object;
 }
 
@@ -139,23 +140,23 @@ P _passwordBeanDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset) ?? '') as P;
     case 1:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset) ?? '') as P;
     case 2:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset) ?? '') as P;
     case 3:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset) ?? '') as P;
     case 4:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset) ?? '') as P;
     case 5:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset) ?? '') as P;
     case 6:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset) ?? '') as P;
     case 7:
-      return (reader.readLong(offset)) as P;
+      return (reader.readLongOrNull(offset) ?? 0) as P;
     case 8:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset) ?? '') as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }

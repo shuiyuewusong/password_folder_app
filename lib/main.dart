@@ -1,3 +1,4 @@
+import 'package:logger/logger.dart';
 import 'package:password_folder_app/data/app_data.dart';
 import 'package:password_folder_app/data/folder_data.dart';
 import 'package:password_folder_app/data/password_data.dart';
@@ -22,6 +23,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+
+var logger = Logger();
 
 void main() {
   _initRunApp();
@@ -53,12 +56,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeNotifier = Provider.of<ThemeNotifier>(context);
+    // logger.i('theme'+themeNotifier.getThemeDataLight.);
     return GetMaterialApp(
-
       debugShowCheckedModeBanner: false,
-      //设置主题
+      //设置明亮主题
       theme: themeNotifier.getThemeDataLight,
-      //设置主界面
+      //设置暗黑主界面
       darkTheme: themeNotifier.getThemeDataDark,
       // home: const HomePage(),  使用路由而不是home
       // 路由相关设置

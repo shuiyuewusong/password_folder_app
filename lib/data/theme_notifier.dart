@@ -47,15 +47,18 @@ class ThemeNotifier extends ChangeNotifier {
     MaterialColor mc = ThemeColor.getThemeColor(colorStr);
     //设置明亮主题
     final tdLight = ThemeData(
-      brightness: Brightness.light,
-      primarySwatch: mc,
-      dividerColor: mc,
+      //primaryColor: mc,
+      //colorSchemeSeed: mc,
+      colorScheme: ColorScheme.fromSeed(
+          seedColor: mc, primary: mc, brightness: Brightness.light),
     );
     //设置暗黑主题
     final tdDark = ThemeData(
-      brightness: Brightness.dark,
-      primarySwatch: mc,
-      dividerColor: mc,
+      //colorSchemeSeed: mc,
+      // colorScheme:
+      colorScheme: ColorScheme.fromSeed(
+          seedColor: mc, primary: mc, brightness: Brightness.dark),
+      //brightness: Brightness.dark,
     );
     switch (themeType) {
       case ThemeType.auto:

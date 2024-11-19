@@ -140,7 +140,7 @@ class _BasicSettingPageState extends State<BasicSettingPage> {
     );
   }
 
-  ///语言设置选择框
+  ///主题设置选择框
   DropdownButton _themeSettingDropdownButton() {
     return DropdownButton(
       key: _themeSettingDropdownGlobalKey,

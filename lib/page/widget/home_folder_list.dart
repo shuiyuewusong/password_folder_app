@@ -56,26 +56,31 @@ class _HomeFolderWidgetState extends State<HomeFolderWidget> {
   ListTile _folderTile(FolderBean folderBean) {
     debugPrint('FolderBean:${folderBean.getMap()}');
     return ListTile(
-        // key: ,
-        title: Text(
-          folderBean.name,
-          maxLines: 1,
-          style: TextStyle(
-            fontWeight: FontWeight.w900,
-            fontSize: 16,
-            color: folderBean.id == DynamicData.onTopCheckFolderId
-                ? Theme.of(context).primaryColor
-                : Colors.black,
-          ),
-          // 点击事件回调
+      // key: ,
+      title: Text(
+        folderBean.name,
+        maxLines: 1,
+        style: TextStyle(
+          // fontWeight: FontWeight.w900,
+          fontSize: 16,
+          // color: folderBean.id == DynamicData.onTopCheckFolderId
+          //     ? Theme.of(context).primaryColor
+          //     : null,
         ),
         // 点击事件回调
-        onTap: () {
-          onTapCheck(folderBean.id);
-        },
-        onLongPress: () {
-          onTapCheck(folderBean.id);
-        });
+      ),
+      tileColor: folderBean.id == DynamicData.onTopCheckFolderId
+          ? Theme.of(context).colorScheme.primary
+          : null,
+      // 点击事件回调
+      //onFocusChange: ,
+      onTap: () {
+        onTapCheck(folderBean.id);
+      },
+      // onLongPress: () {
+      //   onTapCheck(folderBean.id);
+      // },
+    );
   }
 
   void onTapCheck(int id) {

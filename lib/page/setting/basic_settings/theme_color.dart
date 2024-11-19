@@ -1,8 +1,11 @@
+import 'package:logger/logger.dart';
 import 'package:password_folder_app/data/theme.dart';
 import 'package:password_folder_app/service/global_settings_service.dart';
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+var logger = Logger();
 
 class ThemeColorPage extends StatefulWidget {
   ///新增密码夹页
@@ -38,6 +41,7 @@ class _ThemeColorPageState extends State<ThemeColorPage> {
         centerTitle: true,
         title: const Text('主题颜色选择器'),
         actions: [
+          //恢复之前所选
           IconButton(
             onPressed: () {
               //恢复默认颜色
@@ -51,12 +55,14 @@ class _ThemeColorPageState extends State<ThemeColorPage> {
               Icons.refresh,
             ),
           ),
+          //保存
           IconButton(
             onPressed: () {
               //设置颜色
               setState(() {
                 GlobalSettingsService().setKeyValue(
                     GSKey.themeColor, screenPickerColor.value.toString());
+                logger.i("保存的颜色色号:" + screenPickerColor.value.toString());
                 Get.back();
               });
             },

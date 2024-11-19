@@ -44,7 +44,7 @@ const FolderBeanSchema = CollectionSchema(
   getId: _folderBeanGetId,
   getLinks: _folderBeanGetLinks,
   attach: _folderBeanAttach,
-  version: '3.1.0+1',
+  version: '3.1.8',
 );
 
 int _folderBeanEstimateSize(
@@ -75,11 +75,12 @@ FolderBean _folderBeanDeserialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  final object = FolderBean();
-  object.id = id;
-  object.name = reader.readString(offsets[0]);
-  object.notes = reader.readString(offsets[1]);
-  object.orders = reader.readLong(offsets[2]);
+  final object = FolderBean(
+    id: id,
+    name: reader.readStringOrNull(offsets[0]) ?? '',
+    notes: reader.readStringOrNull(offsets[1]) ?? '',
+    orders: reader.readLongOrNull(offsets[2]) ?? 0,
+  );
   return object;
 }
 
@@ -91,11 +92,11 @@ P _folderBeanDeserializeProp<P>(
 ) {
   switch (propertyId) {
     case 0:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset) ?? '') as P;
     case 1:
-      return (reader.readString(offset)) as P;
+      return (reader.readStringOrNull(offset) ?? '') as P;
     case 2:
-      return (reader.readLong(offset)) as P;
+      return (reader.readLongOrNull(offset) ?? 0) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
   }

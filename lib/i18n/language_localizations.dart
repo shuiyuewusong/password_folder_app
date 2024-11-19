@@ -43,6 +43,7 @@ class MyLanguageTr extends Translations {
           LanguageText.name: LanguageText.name,
           LanguageText.account: LanguageText.account,
           LanguageText.password: LanguageText.password,
+          LanguageText.otp2FA: LanguageText.otp2FA,
           LanguageText.notes: LanguageText.notes,
           LanguageText.order: LanguageText.order,
           LanguageText.theSmallerTheNumberTheHigherTheOrder:
@@ -124,6 +125,7 @@ class MyLanguageTr extends Translations {
           LanguageText.name: '名称',
           LanguageText.account: '账户',
           LanguageText.password: '密码',
+          LanguageText.otp2FA: '双重验证码',
           LanguageText.notes: '备注',
           LanguageText.order: '排序',
           LanguageText.theSmallerTheNumberTheHigherTheOrder: '数字越小排序越前,默认0.',

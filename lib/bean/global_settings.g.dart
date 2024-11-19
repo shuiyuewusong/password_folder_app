@@ -39,7 +39,7 @@ const GlobalSettingsSchema = CollectionSchema(
   getId: _globalSettingsGetId,
   getLinks: _globalSettingsGetLinks,
   attach: _globalSettingsAttach,
-  version: '3.1.0+1',
+  version: '3.1.8',
 );
 
 int _globalSettingsEstimateSize(
